@@ -1,13 +1,14 @@
 import React from "react";
-import {View, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {TodoType} from "../../App";
+import {AppText} from "./ui/AppText";
 
 export const Todo = (props: PropsType) => {
     return (
         <TouchableOpacity activeOpacity={0.5} onPress={() => props.onOpen(props.todo.id)}
                           onLongPress={props.onRemove.bind(null, props.todo.id)}>
             <View style={styles.todo}>
-                <Text>{props.todo.title}</Text>
+                <AppText>{props.todo.title}</AppText>
             </View>
         </TouchableOpacity>
     )

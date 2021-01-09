@@ -1,13 +1,14 @@
 import React, {useState} from "react";
-import {Button, Modal, TextInput, View, StyleSheet, Alert} from "react-native";
+import {Alert, Modal, StyleSheet, TextInput, View} from "react-native";
 import {THEME} from "../theme";
+import {AppButton} from "./ui/AppButton";
 
 export const EditModal = (props: PropsType) => {
 
     const [title, setTitle] = useState(props.value)
 
     const saveHandler = () => {
-        if(title.trim().length < 3) {
+        if (title.trim().length < 3) {
             Alert.alert("Ошибка", "Минимальная длина 3 символа")
         } else {
             props.onSave(title)
@@ -21,8 +22,8 @@ export const EditModal = (props: PropsType) => {
                            autoCapitalize={"none"} autoCorrect={false} maxLength={64}
                            value={title} onChangeText={text => setTitle(text)}/>
                 <View style={styles.buttons}>
-                    <Button title={"Отменить"} onPress={props.onCancel} color={THEME.DANGER_COLOR}/>
-                    <Button title={"Сохранить"} onPress={saveHandler}/>
+                    <AppButton onPress={props.onCancel} color={THEME.DANGER_COLOR}>Отменить</AppButton>
+                    <AppButton onPress={saveHandler}>Сохранить</AppButton>
                 </View>
             </View>
         </Modal>
